@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client
+  namespace: otterize-tutorial-mapper
+spec:
+  selector:
+    matchLabels:
+      app: client
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      containers:
+        - name: client
+          image: alpine/curl
+          command: ["/bin/sh", "-c", "--"]
+          args:
+            [
+              "while true; do curl -s server; sleep 1; echo 'Client - The time is:'; curl -v --silent google.com 2>&1 | grep 'Date:'; sleep 2; done",
+            ]
