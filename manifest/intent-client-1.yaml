@@ -1,0 +1,23 @@
+apiVersion: k8s.otterize.com/v2beta1
+kind: ClientIntents
+metadata:
+  name: client
+  namespace: otterize-tutorial-mapper
+spec:
+  workload:
+    name: client
+    kind: Deployment
+  targets:
+    - kubernetes:
+        name: server
+        kind: Deployment
+    - internet:
+        domains:
+          - GOOGLE.cOm
+          - GoOGle.cOM
+          - GoOgLE.cOm
+          - GooGLe.COm
+          - gOoGLe.COM
+          - goOgLE.coM
+          - goOgle.com
+          - google.com
