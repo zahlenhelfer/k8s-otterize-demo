@@ -1,0 +1,14 @@
+---
+apiVersion: k8s.otterize.com/v2beta1
+kind: ClientIntents
+metadata:
+  name: client
+  namespace: otterize-tutorial-mapper
+spec:
+  workload:
+    name: client
+    kind: Deployment
+  targets:
+    - kubernetes:
+        name: server
+        kind: Deployment
