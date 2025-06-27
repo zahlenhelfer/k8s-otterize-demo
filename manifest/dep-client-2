@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client2
+  namespace: otterize-tutorial-mapper
+spec:
+  selector:
+    matchLabels:
+      app: client2
+  template:
+    metadata:
+      labels:
+        app: client2
+    spec:
+      containers:
+        - name: client2
+          image: alpine/curl
+          command: ["/bin/sh", "-c", "--"]
+          args:
+            [
+              "while true; do curl -s server; sleep 1; echo 'Client2 - These are usually funny:'; curl -s https://xkcd.com/info.0.json; sleep 2; done",
+            ]

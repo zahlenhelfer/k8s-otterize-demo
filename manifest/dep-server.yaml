@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server
+  namespace: otterize-tutorial-mapper
+spec:
+  selector:
+    matchLabels:
+      app: server
+  template:
+    metadata:
+      labels:
+        app: server
+    spec:
+      containers:
+        - name: server
+          image: node:19
+          command: ["/bin/sh", "-c"]
+          args:
+            [
+              "echo \"\n\nHi, I am the server, do you have the time or know anything funny?\n \" > index.html; npx --yes http-server -p 80 ",
+            ]
